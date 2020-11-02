@@ -2,7 +2,7 @@
     Source: https://evotec.xyz/getting-windows-10-build-version-from-active-directory
 
 
-    Date:    07.06.2020
+    Date:    02.11.2020
     Name:    Geir-Hugo Hanssen
 
     Comment: Script to get the count of all Windows klient build versions, and save to file. Then manually update excel document to see trends.
@@ -112,7 +112,7 @@ $Date = (Get-Date -Format "yyyy.MM.dd")
 $Time = (Get-Date -Format "HHmm")
 $File = $PSScriptRoot + "\OperatingSystemCount_" + $Year + "_" + $Week + ".txt"
 
-$Computers = Get-ADComputer -Filter 'operatingsystem -notlike "*server*"' -properties Name, OperatingSystem, OperatingSystemVersion
+$Computers = Get-ADComputer -Filter { operatingsystem -notlike "*server*" -and operatingsystem -notlike "HDS NAS OS" }  -properties Name, OperatingSystem, OperatingSystemVersion
 $ComputerList = foreach ($_ in $Computers) {
     [PSCustomObject] @{
         Name                   = $_.Name
