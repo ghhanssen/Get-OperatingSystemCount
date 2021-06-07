@@ -2,7 +2,7 @@
     Source: https://evotec.xyz/getting-windows-10-build-version-from-active-directory
 
 
-    Date:    02.11.2020
+    Date:    07.06.2021
     Name:    Geir-Hugo Hanssen
 
     Comment: Script to get the count of all Windows klient build versions, and save to file. Then manually update excel document to see trends.
@@ -68,6 +68,7 @@ function ConvertTo-OperatingSystem {
 
     if ($OperatingSystem -like 'Windows 10*') {
         $Systems = @{
+			'10.0 (19043)' = "Windows 10 21H1"
 			'10.0 (19042)' = "Windows 10 20H2"
             '10.0 (19041)' = "Windows 10 2004"
             '10.0 (18363)' = "Windows 10 1909"
