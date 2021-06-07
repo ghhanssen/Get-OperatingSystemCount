@@ -113,7 +113,7 @@ $Date = (Get-Date -Format "yyyy.MM.dd")
 $Time = (Get-Date -Format "HHmm")
 $File = $PSScriptRoot + "\OperatingSystemCount_" + $Year + "_" + $Week + ".txt"
 
-$Computers = Get-ADComputer -Filter { operatingsystem -notlike "*server*" -and operatingsystem -notlike "HDS NAS OS" }  -properties Name, OperatingSystem, OperatingSystemVersion
+$Computers = Get-ADComputer -Filter { operatingsystem -notlike "*server*" -and operatingsystem -notlike "HDS NAS OS" -and Enabled -eq $True }  -properties Name, OperatingSystem, OperatingSystemVersion
 $ComputerList = foreach ($_ in $Computers) {
     [PSCustomObject] @{
         Name                   = $_.Name
